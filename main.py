@@ -1,4 +1,15 @@
-import pygame
+try:
+    import pygame
+except ModuleNotFoundError:
+    # télécharge pygame si il n'a pas déjà été installé
+    import pip
+    if hasattr(pip, 'main'):
+        pip.main(['install', "pygame"])
+    else:
+        pip._internal.main(['install', "pygame"])
+    import pygame
+    print("| Pygame a été téléchargé avec succès !")
+
 from time import time
 from os import chdir
 from pathlib import Path
